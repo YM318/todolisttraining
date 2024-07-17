@@ -1,6 +1,8 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -13,6 +15,10 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+DB::listen(function ($event) {
+    dump($event->sql);
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +35,8 @@ Route::get('/aboutus/{namakementerian}', function($namakementerian){
 // Route::get('/aboutus/{namakementerian}', [MyFirstController::class, 'aboutus']);
 
 Route::get('/users', [UserController::class, 'index']);
+
+Route::get('tasks',[TaskController::class,'index']);
 
 
 
