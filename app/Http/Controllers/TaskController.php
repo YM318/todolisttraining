@@ -37,14 +37,24 @@ class TaskController extends Controller
         // dd($task->user->tasks->last()->title);
         // // dd($task->comments->first()->user->tasks);
 
-        $tasks = Task::all();
+        // lazy loading
+        // $tasks = Task::all();
+
+        // eager loading to optimise loading time
+        $tasks = Task::with('user')->get();
+
         return view('tasks.index', compact('tasks'));
 
     }
-    function show(Task $task) {
-        dd($task);
 
+    function show(Task $task) {
+        // dd($task);
+        // used when have execute query. have relationship with model
+        $task = $task->load('comments.user','user');
+        return view('tasks.show', compact('task'));
       }
+
+    
 
 
 }
