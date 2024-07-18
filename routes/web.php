@@ -16,9 +16,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-DB::listen(function ($event) {
-    dump($event->sql);
-});
+// DB::listen(function ($event) {
+//     dump($event->sql);
+// });
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,7 +36,11 @@ Route::get('/aboutus/{namakementerian}', function($namakementerian){
 
 Route::get('/users', [UserController::class, 'index']);
 
-Route::get('tasks',[TaskController::class,'index']);
+Route::get('tasks',[TaskController::class,'index'])->name('tasks.index');
+
+Route::post('tasks/ajaxloadtasks',[TaskController::class,'ajaxloadtasks'])->name('tasks.ajaxloadtasks');
+
+Route::get('tasks/{task}',[TaskController::class,'show'])->name('tasks.show');
 
 
 
