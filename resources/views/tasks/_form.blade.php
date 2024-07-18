@@ -12,6 +12,7 @@
         <div class="form-group">
             <label for="user_id">Pengguna</label>
             <select id="user_id" name="user_id" class="form-control {{ $errors->has('user_id') ? ' is-invalid' : '' }}" required >
+                <option value="">Pilih</option>
                 @foreach ($users as $key=>$user)
                 <option {{old('user_id')==$key ? 'selected':''}} value="{{ $key }}">{{ $user }}</option>
                 @endforeach
