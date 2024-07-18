@@ -36,7 +36,7 @@ Route::get('/aboutus/{namakementerian}', function($namakementerian){
 
 Route::get('/users', [UserController::class, 'index']);
 
-Route::get('tasks',[TaskController::class,'index']);
+Route::get('tasks',[TaskController::class,'index'])->name('tasks.index');
 
 Route::post('tasks/ajaxloadtasks',[TaskController::class,'ajaxloadtasks'])->name('tasks.ajaxloadtasks');
 
