@@ -44,7 +44,15 @@ Route::get('tasks/create', [TaskController::class, 'create'])->name('tasks.creat
 
 Route::post('tasks', [TaskController::class, 'store'])->name('tasks.store');
 
+Route::post('tasks/ajaxloadtask', [TaskController::class,'ajaxloadtask'])->name('tasks.ajaxloadtask');
+
+Route::post('tasks/update', [TaskController::class,'update'])->name('tasks.update');
+
+Route::post('tasks/delete', [TaskController::class,'delete'])->name('tasks.delete');
+
 Route::get('tasks/{task}',[TaskController::class,'show'])->name('tasks.show');
+
+
 
 
 

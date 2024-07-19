@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     public $timestamps = true;
 
@@ -24,7 +25,7 @@ class Task extends Model
     function getRouteKeyName(){
         return 'uuid';
     }
-    
+
     /**
      * Get the user that owns the Task
      *
